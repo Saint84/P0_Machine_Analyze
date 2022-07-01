@@ -2,15 +2,6 @@ import pandas
 
 
 class DBSetup:
-    def __new__(cls, *args, **kwargs):
-        info = """
-        - Author = Bruno Santos
-        - Developed Data = 16/05/2022
-        """
-        print(info)
-        print('_' * 50)
-        return object.__new__(cls)
-
     def __init__(self) -> None:
         self.DB_Path: str = '../Database/2022-05-10-11-15-59.csv'
         self.DF_Date: list = []
@@ -62,7 +53,7 @@ class DBSetup:
 
     def update(self):
         self.db_setting()
-        return self.Dict_Parameters
+        return
 
 
 if __name__ == '__main__':

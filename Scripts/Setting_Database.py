@@ -51,6 +51,9 @@ class DBSetup:
         self.DF_Condensing_Temperature = \
             db_csv_file['Temperatura de condensação [°C]'].apply(lambda x: x.replace(',', '.')).astype(float).tolist()
 
+        self.DF_Date = db_csv_file['Data/Hora'].apply(lambda x: x.split(' ')[1]).tolist()
+
+        self.Dict_Parameters['Date'] = self.DF_Date
         self.Dict_Parameters["LP"] = self.DF_Evaporation_Pressure
         self.Dict_Parameters["HP"] = self.DF_Condensing_Pressure
         self.Dict_Parameters["LT"] = self.DF_Evaporation_Temperature

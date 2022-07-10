@@ -10,6 +10,7 @@ class GraphicPerformance:
         self.PNG_Path = ''
         self.Dict_Parameters: dict = parameters
         self.Time_Seconds: list = [x for x in range(1, 660, 1)]
+        self.Text_Annotation: str = "[+] Voltage: 220V\n[+] Phase: 3\n[+] Frequency: 60Hz"
         return
 
     def graphic_plotting(self):
@@ -29,6 +30,13 @@ class GraphicPerformance:
             '#00ff41',  # matrix green
         ]
 
+        # Annotation:
+        text_font = {'family': 'sans-serif',
+                     'style': 'normal',
+                     'color': 'black',
+                     'weight': 'light',
+                     'size': 8}
+
         fig, ax = plt.subplots(2)
         # _____________________________________________ [Graphic 01] _________________________________________________
         for n in range(1, 30):
@@ -39,8 +47,9 @@ class GraphicPerformance:
         ax[0].set_xlabel('Time [Seconds]')
         ax[0].set_ylabel('Pressure [Psig]')
         ax[0].minorticks_on()
-        ax[0].set_title('High Pressure Analyze')
-        ax[0].legend(fontsize=8)
+        ax[0].set_title('High Pressure Analyze', color='white')
+        ax[0].legend(fontsize=12, loc='center left', bbox_to_anchor=(1, 0.5))
+        ax[0].text(550, 190, self.Text_Annotation, fontdict=text_font, bbox=dict(facecolor='lightgray', alpha=0.8))
         ax[0].grid(True)
 
         # _____________________________________________ [Graphic 02] _________________________________________________
@@ -52,12 +61,14 @@ class GraphicPerformance:
         ax[1].set_xlabel('Time [Seconds]')
         ax[1].set_ylabel('Pressure [Psig]')
         ax[1].minorticks_on()
-        ax[1].set_title('Low Pressure Analyze')
-        ax[1].legend(fontsize=8)
+        ax[1].set_title('Low Pressure Analyze', color='white')
+        ax[1].legend(fontsize=12, loc='center left', bbox_to_anchor=(1, 0.5))
+        ax[1].text(550, 60, self.Text_Annotation, fontdict=text_font, bbox=dict(facecolor='lightgray', alpha=0.8))
         ax[1].grid(True)
 
         # ________________________________________ [Standard Configuration] ___________________________________________
-        fig.suptitle('Performance Analyze')
+        fig.set_size_inches(8, 8)
+        fig.suptitle('Performance Analyze', color='White', fontsize=18)
         fig.tight_layout()
         plt.show()
         return

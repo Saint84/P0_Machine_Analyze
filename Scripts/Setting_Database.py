@@ -2,6 +2,9 @@ import pandas
 
 
 class DBSetup:
+    """
+    Pressure and Temperature simulation - POPLINE.
+    """
     def __init__(self) -> None:
         self.DB_Path: str = '../Database/2022-05-10-11-15-59.csv'
         self.DF_Date: list = []
